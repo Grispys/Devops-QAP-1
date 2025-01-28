@@ -58,11 +58,41 @@ public class Account {
         System.out.print("Enter Password: ");
         String password = scanner.nextLine();
 
-        Account tempUser = new Account(username, password);
+//        System.out.println(users);
 
-        for(Account users : users){
-            if(tempUser.getUsername().equals(username) && tempUser.getPassword().equals(password)){
+        for(Account user : users){
+            if(user.getUsername().equals(username) && user.getPassword().equals(password)){
+                user.deposit(200.00);
                 System.out.println("Welcome, " + username);
+                while (true) {
+                    System.out.println("\n--- Inertia Banking ---");
+                    System.out.println("1. Make a Deposit");
+                    System.out.println("2. Make a Withdrawal");
+                    System.out.println("3. View Balance");
+                    System.out.println("3. Sign out");
+                    System.out.print("Enter your choice: ");
+                    int choice = scanner.nextInt();
+                    scanner.nextLine();
+
+                    switch (choice) {
+                        case 1:
+
+                            break;
+                        case 2:
+
+                            break;
+                        case 3:
+                            user.showBalance();
+                            break;
+                        case 4:
+                            System.out.println("Logging out...");
+                            return;
+                        default:
+                            System.out.println("Invalid choice. Please try again.");
+                    }
+                }
+            }else{
+                System.out.println("Error: Invalid credentials");
             }
         }
     }

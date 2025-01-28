@@ -1,5 +1,7 @@
 import java.util.Scanner;
 
+
+//i'm being time efficient!!!!!!!!!!!!! by using the same menu structure i used last time :3
 public class SimpleBankingApp {
     private static final Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
