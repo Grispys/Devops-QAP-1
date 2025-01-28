@@ -26,17 +26,21 @@ public class Account {
         return this.password;
     }
 
-    public void deposit(double deposits){
+    public void deposit(){
+        System.out.println("Please enter amount to deposit: ");
+        Double deposits = scanner.nextDouble();
         this.balance = this.balance + deposits;
-        System.out.println("Deposit Successful. New Balance: " + this.balance);
+        System.out.println("Deposit Successful. New Balance: $" + this.balance);
     }
 
-    public void withdraw(double withdrawal){
-        if(withdrawal > this.balance){
-            System.out.println("Withdrawal unsuccessful; Lack of funds. Your balance: $" + this.balance + ". Attempted Withdrawal: " + withdrawal);
+    public void withdraw(){
+        System.out.println("Please enter amount to withdraw: ");
+        Double withdraw = scanner.nextDouble();
+        if(withdraw > this.balance){
+            System.out.println("Withdrawal unsuccessful; Lack of funds. Your balance: $" + this.balance + ". Attempted Withdrawal: " + withdraw);
         }else{
-            this.balance = this.balance - withdrawal;
-            System.out.println("Withdrawal Successful. New Balance: " + this.balance);
+            this.balance = this.balance - withdraw;
+            System.out.println("Withdrawal Successful. New Balance: $" + this.balance);
         }
 
     }
@@ -62,24 +66,24 @@ public class Account {
 
         for(Account user : users){
             if(user.getUsername().equals(username) && user.getPassword().equals(password)){
-                user.deposit(200.00);
+//                user.deposit(200.00);
                 System.out.println("Welcome, " + username);
                 while (true) {
                     System.out.println("\n--- Inertia Banking ---");
                     System.out.println("1. Make a Deposit");
                     System.out.println("2. Make a Withdrawal");
                     System.out.println("3. View Balance");
-                    System.out.println("3. Sign out");
+                    System.out.println("4. Sign out");
                     System.out.print("Enter your choice: ");
                     int choice = scanner.nextInt();
                     scanner.nextLine();
 
                     switch (choice) {
                         case 1:
-
+                            user.deposit();
                             break;
                         case 2:
-
+                            user.withdraw();
                             break;
                         case 3:
                             user.showBalance();
