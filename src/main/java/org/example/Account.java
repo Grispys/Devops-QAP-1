@@ -20,6 +20,10 @@ public class Account {
         System.out.print("Your balance: $" + this.balance);
     }
 
+    public double getBalance(){
+        return this.balance;
+    }
+
     public String getUsername(){
         return this.username;
     }
