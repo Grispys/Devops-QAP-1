@@ -34,21 +34,36 @@ public class Account {
 
     public void deposit(){
         System.out.println("Please enter amount to deposit: ");
-        Double deposits = scanner.nextDouble();
-        this.balance = this.balance + deposits;
-        System.out.println("Deposit Successful. New Balance: $" + this.balance);
+        double deposits = scanner.nextDouble();
+        if(deposits <=0){
+            System.out.println("Error: cannot deposit zero");
+        }else{
+            depositAdd(deposits);
+            System.out.println("Deposit Successful. New Balance: $" + this.balance);
+        }
+
+    }
+
+    public void depositAdd(double money){
+        this.balance += money;
     }
 
     public void withdraw(){
         System.out.println("Please enter amount to withdraw: ");
-        Double withdraw = scanner.nextDouble();
+        double withdraw = scanner.nextDouble();
+        withdrawalAdd(withdraw);
+
+    }
+
+    public boolean withdrawalAdd(double withdraw){
         if(withdraw > this.balance){
             System.out.println("Withdrawal unsuccessful; Lack of funds. Your balance: $" + this.balance + ". Attempted Withdrawal: " + withdraw);
+            return false;
         }else{
             this.balance = this.balance - withdraw;
             System.out.println("Withdrawal Successful. New Balance: $" + this.balance);
+            return true;
         }
-
     }
 
 
